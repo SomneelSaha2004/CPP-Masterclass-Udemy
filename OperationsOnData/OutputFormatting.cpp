@@ -4,7 +4,7 @@
 #include <fstream>
 /*
 std::flush - causes data to be directly sent to terminal(no buffer)
-
+std::setfill - to fill the space with a character
 std::setw() - formatting 
 */
 int main(){
