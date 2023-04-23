@@ -3,20 +3,21 @@
 #include <iomanip>
 #include <string>
 #include <cmath>
+#include <bitset>
 void print(){
    std:: fstream f("calculator.txt");std::string line;
    while(getline(f,line)){
     std::cout<<line<<std::endl;
    }
 }
-int main(){std::fstream f("calculator.txt",std::ios::app);
+int main(){
     
     std::cout<<"        "<<"Welcome to Calculator 2.0"<<std::endl;
     std::cout<<"Basic : + -> Add    - -> Substract  * -> Mutliply   / -> Divide\n";
     std::cout<<"Trigonometry :  t -> tan(x) s -> sin(x) c -> cos(x)\n";
-    std::cout<<"Number systems : o -> octal h -> hexadecimal\n";
+    std::cout<<"Number systems : o -> octal h -> hexadecimal    b-> binary\n";
     std::cout<<"To print history enter p\nTo quit enter q\n\n";
-    std::cout<<std::left<<std::showbase;
+    std::cout<<std::left<<std::showbase;std::fstream f("calculator.txt",std::ios::app);
     while(true){char op;double a,b,theta,sum;std::string out;
         std::cout<<"Enter operation : ";
         std::cin>>op;
@@ -52,7 +53,7 @@ int main(){std::fstream f("calculator.txt",std::ios::app);
             }
             std::cout<<out<<theta<<" = "<<sum<<"\n";
             f<<out<<theta<<" = "<<sum<<"\n";
-        }else if(op=='o'||op=='h'){
+        }else if(op=='o'||op=='h'||op=='b'){
             int o;
             std::cout<<"     value: ";
             std::cin>>o;
@@ -67,7 +68,13 @@ int main(){std::fstream f("calculator.txt",std::ios::app);
                 std::cout<<"hexadeximal "<<o<<" = "<<std::hex<<o<<"\n";
                 f<<"hexadeximal "<<o<<" = "<<std::hex<<o<<"\n";
                 break;
+                case 'b':
+               
+                std::cout<<"binary "<<o<<" = "<<std::bitset<32>(o)<<"\n";
+                f<<"binary  "<<o<<" = "<<std::bitset<32>(o)<<"\n";
+                break;
             }
+            f.close();
         }
 
         }
