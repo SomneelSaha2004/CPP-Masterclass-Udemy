@@ -10,6 +10,13 @@ void print(){
     std::cout<<line<<std::endl;
    }
 }
+bool checkOperator(char op){
+    char operators[]={'+','-','*','/','t','s','c','o','h','b','p','q'};
+    for(char val: operators){
+        if(val==op){return true;}
+    }
+    return false;
+}
 int main(){
     
     std::cout<<"        "<<"Welcome to Calculator 2.0"<<std::endl;
@@ -19,8 +26,14 @@ int main(){
     std::cout<<"To print history enter p\nTo quit enter q\n\n";
     std::cout<<std::left<<std::showbase;std::fstream f("calculator.txt",std::ios::app);
     while(true){char op;double a,b,theta,sum;std::string out;
+        
         std::cout<<"Enter operation : ";
+        
         std::cin>>op;
+       if(!checkOperator(op)){
+            std::cout<<"This operation is not supported!\n\n";
+            continue;
+       }
         if(op=='q'){break;}
         else if(op=='p'){print();}
         if(op=='+'||op=='-'||op=='/'||op=='*'){
